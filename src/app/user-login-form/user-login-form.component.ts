@@ -6,7 +6,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-import { FormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms'; // Import FormsModule
 
 @Component({
   selector: 'app-user-login-form',
@@ -18,7 +18,7 @@ import { FormsModule } from '@angular/forms';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    FormsModule, // Ensure FormsModule is imported here
+    FormsModule, // Ensure FormsModule is included here
   ],
 })
 export class UserLoginFormComponent implements OnInit {
@@ -35,9 +35,6 @@ export class UserLoginFormComponent implements OnInit {
   loginUser(): void {
     this.fetchApiData.loginUser(this.loginData).subscribe(
       (response) => {
-        localStorage.setItem('user', JSON.stringify(response.user));
-        localStorage.setItem('token', response.token);
-
         this.dialogRef.close();
         this.snackBar.open('Login successful!', 'OK', {
           duration: 2000,

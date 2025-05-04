@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class FetchApiDataService {
-  private apiUrl = 'https://murmuring-brook-46457-0204485674b0.herokuapp.com/';
+  private apiUrl = 'https://murmuring-brook-46457-0204485674b0.herokuapp.com';
 
   constructor(private http: HttpClient) {}
 

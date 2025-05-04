@@ -1,4 +1,3 @@
-// filepath: c:\Users\pc\Desktop\CareerFoundry\AngularMyFlix\myFlix-Angular-client\src\main.ts
 import { bootstrapApplication } from '@angular/platform-browser';
 import { AppComponent } from './app/app.component';
 import { importProvidersFrom } from '@angular/core';
@@ -7,6 +6,9 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { FormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
 
 bootstrapApplication(AppComponent, {
   providers: [
@@ -15,7 +17,10 @@ bootstrapApplication(AppComponent, {
       MatDialogModule,
       MatSnackBarModule,
       FormsModule,
-      MatCardModule // Ensure MatCardModule is included here
+      MatCardModule,
+      MatFormFieldModule,
+      MatInputModule,
+      MatButtonModule // Ensure this is included
     ),
   ],
 }).catch((err) => console.error(err));

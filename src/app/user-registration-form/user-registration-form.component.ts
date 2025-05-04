@@ -6,7 +6,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-import { FormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms'; // Import FormsModule
 
 @Component({
   selector: 'app-user-registration-form',
@@ -14,15 +14,15 @@ import { FormsModule } from '@angular/forms';
   styleUrls: ['./user-registration-form.component.css'],
   standalone: true,
   imports: [
-    MatCardModule, // Ensure MatCardModule is imported here
+    MatCardModule,
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    FormsModule, // Ensure FormsModule is imported here
+    FormsModule, // Ensure FormsModule is included here
   ],
 })
 export class UserRegistrationFormComponent implements OnInit {
-  @Input() userData = { Username: '', Password: '', Email: '', Birthday: '' };
+  @Input() userData = { Username: '', Password: '', Email: '' };
 
   constructor(
     public fetchApiData: FetchApiDataService,
