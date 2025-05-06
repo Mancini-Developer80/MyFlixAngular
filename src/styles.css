@@ -1,53 +1,31 @@
-/* You can add global styles to this file,
-and also import other style files  */
+html,
+body {
+  height: 100%;
+  background-color: black;
+  color: #333;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.toolbar-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-left: 10px;
+}
 
 .main-page {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   height: 100vh;
   background-image: linear-gradient(to right, #4facfe, #00f2fe);
 }
 
-h1 {
-  font-size: 3em;
-  color: white;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-}
-h2 {
-  font-size: 2em;
-  color: white;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-}
-button {
-  background-color: #007bff;
-  color: white;
-  border: none;
-  padding: 10px 20px;
+.welcome-card {
+  width: 400px;
   text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-  border-radius: 4px;
-}
-
-.mat-mdc-dialog-container {
-  background-color: #f0f0f0;
-  color: #333;
-  font-family: "Arial", sans-serif;
-  font-size: 16px;
   padding: 20px;
-  border-radius: 8px;
-}
-
-/* html,
-body {
-  height: 100%;
-} */
-body {
-  margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+  color: #333;
 }

@@ -22,7 +22,7 @@ import { FormsModule } from '@angular/forms'; // Import FormsModule
   ],
 })
 export class UserRegistrationFormComponent implements OnInit {
-  @Input() userData = { username: '', password: '', email: '' };
+  @Input() userData = { username: '', password: '', email: '', birthday: '' };
 
   constructor(
     public fetchApiData: FetchApiDataService,

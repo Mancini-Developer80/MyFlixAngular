@@ -8,7 +8,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-
+import { FormsModule } from '@angular/forms';
 import { UserRegistrationFormComponent } from './user-registration-form/user-registration-form.component';
 import { UserLoginFormComponent } from './user-login-form/user-login-form.component';
 
@@ -23,6 +23,7 @@ import { UserLoginFormComponent } from './user-login-form/user-login-form.compon
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [],
