@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>User Profile</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form>
+      <mat-form-field appearance="fill">
+        <mat-label>Username</mat-label>
+        <input matinput [(ngmodel)]="userData.username" type="text" />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input matinput [(ngmodel)]="userData.email" type="email" />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Birthday</mat-label>
+        <input matinput [(ngmodel)]="userData.birthday" type="date" />
+      </mat-form-field>
+    </form>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button color="primary" (click)="updateUserProfile()">
+      Save Changes
+    </button>
+  </mat-card-actions>
+</mat-card>

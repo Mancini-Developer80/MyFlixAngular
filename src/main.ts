@@ -9,7 +9,9 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AppRoutingModule } from './app/app-routing.module';
 
 bootstrapApplication(AppComponent, {
   providers: [
@@ -21,8 +23,10 @@ bootstrapApplication(AppComponent, {
       MatCardModule,
       MatFormFieldModule,
       MatInputModule,
-      MatButtonModule
-      // BrowserAnimationsModule
+      MatButtonModule,
+      MatToolbarModule,
+      BrowserAnimationsModule,
+      AppRoutingModule
     ),
   ],
-}).catch((err) => console.error(err));
+});

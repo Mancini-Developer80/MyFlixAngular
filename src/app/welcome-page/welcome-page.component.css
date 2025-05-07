@@ -1,0 +1,13 @@
+.main-page {
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+}
+
+.button-container {
+  margin-top: 10px;
+}
+
+button {
+  margin: 0 10px;
+}
