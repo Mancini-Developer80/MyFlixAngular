@@ -6,7 +6,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-import { FormsModule } from '@angular/forms'; // Import FormsModule
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-user-login-form',
@@ -19,6 +20,7 @@ import { FormsModule } from '@angular/forms'; // Import FormsModule
     MatInputModule,
     MatButtonModule,
     FormsModule,
+    CommonModule,
   ],
 })
 export class UserLoginFormComponent implements OnInit {

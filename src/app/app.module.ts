@@ -16,6 +16,12 @@ import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 import { RouterModule, Routes } from '@angular/router';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 
+const appRoutes: Routes = [
+  { path: '', component: WelcomePageComponent },
+  { path: 'movies', component: MovieCardComponent },
+  { path: 'profile', component: UserProfileComponent },
+];
+
 @NgModule({
   declarations: [
     UserRegistrationFormComponent,
@@ -38,6 +44,6 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
     RouterModule.forRoot(appRoutes),
   ],
   providers: [],
-  bootstrap: [],
+  bootstrap: [WelcomePageComponent],
 })
 export class AppModule {}
