@@ -8,6 +8,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
+/**
+ * Component for displaying and managing user profile information.
+ * Allows users to view and update their details and favorite movies.
+ */
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',
@@ -23,25 +27,45 @@ import { CommonModule } from '@angular/common';
   ],
 })
 export class UserProfileComponent implements OnInit {
-  userData: any = { username: '', email: '', birthday: '' }; // User data object
-  favoriteMovies: any[] = []; // Array to store favorite movies
+  /**
+   * Stores user data including username, email, and birthday.
+   */
+  userData: any = { username: '', email: '', birthday: '' };
 
+  /**
+   * Stores the user's favorite movies.
+   */
+  favoriteMovies: any[] = [];
+
+  /**
+   * Creates an instance of UserProfileComponent.
+   *
+   * @param fetchApiData - Service for fetching and updating user data.
+   * @param snackBar - MatSnackBar instance for displaying notifications.
+   */
   constructor(
     private fetchApiData: FetchApiDataService,
     private snackBar: MatSnackBar
   ) {}
 
+  /**
+   * Lifecycle hook that executes when the component initializes.
+   * Fetches user profile data.
+   */
   ngOnInit(): void {
-    this.getUserProfile(); // Fetch user profile on component initialization
+    this.getUserProfile();
   }
 
-  // Fetch user profile data
+  /**
+   * Fetches user profile data from the API.
+   * Retrieves user information and triggers fetching favorite movies.
+   */
   getUserProfile(): void {
     const username = localStorage.getItem('username') || '';
     this.fetchApiData.getUser(username).subscribe(
       (response) => {
-        this.userData = response; // Populate user data
-        this.getFavoriteMovies(); // Fetch favorite movies after user data
+        this.userData = response;
+        this.getFavoriteMovies();
       },
       (error) => {
         console.error('Error fetching user data:', error);
@@ -49,12 +73,14 @@ export class UserProfileComponent implements OnInit {
     );
   }
 
-  // Fetch favorite movies
+  /**
+   * Fetches the user's favorite movies from the API.
+   */
   getFavoriteMovies(): void {
     const username = localStorage.getItem('username') || '';
     this.fetchApiData.getFavoriteMovies(username).subscribe(
       (response) => {
-        this.favoriteMovies = response; // Populate favorite movies array
+        this.favoriteMovies = response;
       },
       (error) => {
         console.error('Error fetching favorite movies:', error);
@@ -62,16 +88,19 @@ export class UserProfileComponent implements OnInit {
     );
   }
 
-  // Update user profile
+  /**
+   * Updates user profile information.
+   * Sends updated data to the API and displays a success or error message.
+   */
   updateUserProfile(): void {
     const username = localStorage.getItem('username') || '';
     this.fetchApiData.editUser(username, this.userData).subscribe(
-      (response) => {
+      () => {
         this.snackBar.open('Profile updated successfully!', 'OK', {
           duration: 2000,
         });
       },
-      (error) => {
+      () => {
         this.snackBar.open('Failed to update profile.', 'OK', {
           duration: 2000,
         });

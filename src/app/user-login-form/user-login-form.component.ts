@@ -10,6 +10,10 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 
+/**
+ * Component for handling user login functionality.
+ * Displays a form where users enter their credentials to authenticate.
+ */
 @Component({
   selector: 'app-user-login-form',
   templateUrl: './user-login-form.component.html',
@@ -25,8 +29,19 @@ import { Router } from '@angular/router';
   ],
 })
 export class UserLoginFormComponent implements OnInit {
+  /**
+   * Holds the login credentials entered by the user.
+   */
   @Input() loginData = { username: '', password: '' };
 
+  /**
+   * Creates an instance of UserLoginFormComponent.
+   *
+   * @param fetchApiData - Service to handle API requests related to user authentication.
+   * @param dialogRef - Reference to the opened dialog, enabling programmatic control.
+   * @param snackBar - MatSnackBar instance for displaying login status notifications.
+   * @param router - Router instance to navigate upon successful login.
+   */
   constructor(
     public fetchApiData: FetchApiDataService,
     public dialogRef: MatDialogRef<UserLoginFormComponent>,
@@ -34,8 +49,16 @@ export class UserLoginFormComponent implements OnInit {
     private router: Router
   ) {}
 
+  /**
+   * Lifecycle hook that runs when the component is initialized.
+   */
   ngOnInit(): void {}
 
+  /**
+   * Sends login data to the API, verifies credentials, and handles user authentication.
+   * On success, closes the dialog, stores user details, and navigates to the movies page.
+   * On failure, displays an error message.
+   */
   loginUser(): void {
     this.fetchApiData.loginUser(this.loginData).subscribe(
       (response) => {
