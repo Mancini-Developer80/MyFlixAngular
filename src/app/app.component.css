@@ -31,4 +31,21 @@ a:hover {
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+}
+
+.btn.logout {
+  background-color: #14c2e5;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 7px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn.logout:hover {
+  background-color: #1adbe9;
+  transform: scale(1.05);
 }

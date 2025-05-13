@@ -6,7 +6,8 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog'; // Import
 import { MatIconModule } from '@angular/material/icon'; // Import MatIconModule
 import { GenreDialogComponent } from '../genre-dialog/genre-dialog.component';
 import { DirectorDialogComponent } from '../director-dialog/director-dialog.component'; // Import DirectorDialogComponent
-import { MovieDetailsDialogComponent } from '../movie-details-dialog/movie-details-dialog.component'; // Import MovieDetailsDialogComponent
+import { MovieDetailsDialogComponent } from '../movie-details-dialog/movie-details-dialog.component';
+import { MatSnackBar } from '@angular/material/snack-bar'; // Import MovieDetailsDialogComponent
 
 @Component({
   selector: 'app-movie-card',
@@ -20,7 +21,8 @@ export class MovieCardComponent implements OnInit {
 
   constructor(
     public fetchApiData: FetchApiDataService,
-    public dialog: MatDialog // Inject MatDialog
+    public dialog: MatDialog, // Inject MatDialog
+    private snackBar: MatSnackBar
   ) {}
 
   ngOnInit(): void {
@@ -55,10 +57,20 @@ export class MovieCardComponent implements OnInit {
       width: '400px',
     });
   }
-
   addToFavorites(movieId: string): void {
-    this.fetchApiData.addFavoriteMovie('username', movieId).subscribe(() => {
-      alert('Movie added to favorites!');
-    });
+    const username = localStorage.getItem('username') || '';
+    this.fetchApiData.addFavoriteMovie(username, movieId).subscribe(
+      (response) => {
+        this.snackBar.open('Movie added to favorites!', 'OK', {
+          duration: 2000,
+        });
+      },
+      (error) => {
+        console.error('Error adding movie to favorites:', error);
+        this.snackBar.open('Failed to add movie to favorites.', 'OK', {
+          duration: 2000,
+        });
+      }
+    );
   }
 }

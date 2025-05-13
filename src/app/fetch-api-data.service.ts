@@ -38,7 +38,7 @@ export class FetchApiDataService {
     });
   }
 
-  // Get director
+  // Get director details
   getDirector(directorName: string): Observable<any> {
     return this.http.get(`${this.apiUrl}/directors/${directorName}`, {
       headers: new HttpHeaders({
@@ -47,7 +47,7 @@ export class FetchApiDataService {
     });
   }
 
-  // Get genre
+  // Get genre details
   getGenre(genreName: string): Observable<any> {
     return this.http.get(`${this.apiUrl}/genres/${genreName}`, {
       headers: new HttpHeaders({
@@ -56,7 +56,7 @@ export class FetchApiDataService {
     });
   }
 
-  // Get user
+  // Get user details
   getUser(username: string): Observable<any> {
     return this.http.get(`${this.apiUrl}/users/${username}`, {
       headers: new HttpHeaders({
@@ -78,6 +78,7 @@ export class FetchApiDataService {
   addFavoriteMovie(username: string, movieId: string): Observable<any> {
     return this.http.post(
       `${this.apiUrl}/users/${username}/movies/${movieId}`,
+      {},
       {
         headers: new HttpHeaders({
           Authorization: `Bearer ${localStorage.getItem('token')}`,
@@ -86,7 +87,7 @@ export class FetchApiDataService {
     );
   }
 
-  // Edit user
+  // Edit user details
   editUser(username: string, userData: any): Observable<any> {
     return this.http.put(`${this.apiUrl}/users/${username}`, userData, {
       headers: new HttpHeaders({

@@ -1,12 +1,19 @@
-<!DOCTYPE html>
 <mat-toolbar color="primary">
   <div class="container">
     <span class="brand">myFlix</span>
     <span class="spacer"></span>
     <div class="menu-container">
-      <a mat-button href="/welcome">Welcome</a>
-      <a mat-button href="/movies" *ngIf="isLoggedIn">Movies</a>
-      <a mat-button href="/profile" *ngIf="isLoggedIn">Profile</a>
+      <a mat-button routerLink="/movies" *ngIf="showMoviesLink()">Movies</a>
+      <a mat-button routerLink="/profile" *ngIf="isUserLoggedIn()">Profile</a>
+      <button
+        class="btn logout"
+        mat-button
+        color="warn"
+        (click)="logout()"
+        *ngIf="isUserLoggedIn()"
+      >
+        Logout
+      </button>
     </div>
   </div>
 </mat-toolbar>

@@ -23,7 +23,8 @@ import { CommonModule } from '@angular/common';
   ],
 })
 export class UserProfileComponent implements OnInit {
-  userData = { username: '', email: '', birthday: '' };
+  userData: any = { username: '', email: '', birthday: '' }; // User data object
+  favoriteMovies: any[] = []; // Array to store favorite movies
 
   constructor(
     private fetchApiData: FetchApiDataService,
@@ -31,16 +32,37 @@ export class UserProfileComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.getUserProfile();
+    this.getUserProfile(); // Fetch user profile on component initialization
   }
 
+  // Fetch user profile data
   getUserProfile(): void {
     const username = localStorage.getItem('username') || '';
-    this.fetchApiData.getUser(username).subscribe((response) => {
-      this.userData = response;
-    });
+    this.fetchApiData.getUser(username).subscribe(
+      (response) => {
+        this.userData = response; // Populate user data
+        this.getFavoriteMovies(); // Fetch favorite movies after user data
+      },
+      (error) => {
+        console.error('Error fetching user data:', error);
+      }
+    );
   }
 
+  // Fetch favorite movies
+  getFavoriteMovies(): void {
+    const username = localStorage.getItem('username') || '';
+    this.fetchApiData.getFavoriteMovies(username).subscribe(
+      (response) => {
+        this.favoriteMovies = response; // Populate favorite movies array
+      },
+      (error) => {
+        console.error('Error fetching favorite movies:', error);
+      }
+    );
+  }
+
+  // Update user profile
   updateUserProfile(): void {
     const username = localStorage.getItem('username') || '';
     this.fetchApiData.editUser(username, this.userData).subscribe(

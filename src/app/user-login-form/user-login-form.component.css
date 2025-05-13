@@ -1,13 +1,13 @@
-/* mat-card {
-  max-width: 400px;
-  margin: 20px auto;
+form {
   padding: 20px;
 }
 
-mat-form-field {
+.btn.form {
   width: 100%;
 }
 
-button {
-  width: 100%;
-} */
+.mat-mdc-card-title {
+  font-size: 1.5rem;
+
+  margin-bottom: 20px;
+}

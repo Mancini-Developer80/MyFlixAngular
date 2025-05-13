@@ -1,5 +1,5 @@
 import { Component, Inject } from '@angular/core';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-movie-details-dialog',
@@ -9,5 +9,12 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
   imports: [],
 })
 export class MovieDetailsDialogComponent {
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any) {}
+  constructor(
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private dialogRef: MatDialogRef<MovieDetailsDialogComponent> // Inject MatDialogRef
+  ) {}
+
+  closeDialog(): void {
+    this.dialogRef.close(); // Closes the dialog programmatically
+  }
 }

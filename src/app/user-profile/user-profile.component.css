@@ -1,7 +1,8 @@
 mat-card {
   max-width: 400px;
-  margin: 20px auto;
+  margin: 150px auto;
   padding: 20px;
+  /* background-color: blue; */
 }
 
 mat-form-field {
@@ -10,4 +11,18 @@ mat-form-field {
 
 button {
   width: 100%;
+}
+
+.user-details {
+  margin-bottom: 20px; /* Add spacing below the details section */
+  padding: 10px;
+  background-color: #f5f5f5; /* Light gray background for contrast */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.user-details p {
+  margin: 5px 0; /* Add spacing between lines */
+  font-size: 1rem; /* Adjust font size */
+  color: #333; /* Dark gray text */
 }

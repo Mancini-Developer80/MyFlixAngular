@@ -1,0 +1,51 @@
+/* Container for the dialog */
+.dialog-container {
+  padding: 20px;
+  background-color: #ffffff; /* White background for the dialog */
+  border-radius: 8px; /* Rounded corners for a modern look */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+  max-width: 500px; /* Limit the width of the dialog */
+  margin: 0 auto; /* Center the dialog horizontally */
+}
+
+/* Title styling */
+.dialog-title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #1976d2; /* Material Design blue for the title */
+  margin-bottom: 15px;
+  text-align: center; /* Center-align the title */
+}
+
+/* Content styling */
+.dialog-content {
+  font-size: 1rem;
+  color: #555555; /* Medium gray for the content text */
+  line-height: 1.6; /* Improve readability with proper line spacing */
+  margin-bottom: 20px;
+  text-align: justify; /* Justify the text for a clean look */
+}
+
+/* Action buttons */
+.dialog-actions {
+  display: flex;
+  justify-content: flex-end; /* Align buttons to the right */
+  gap: 10px; /* Add spacing between buttons */
+}
+
+.dialog-actions button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 4px; /* Rounded corners for buttons */
+  transition: background-color 0.3s ease; /* Smooth hover effect */
+}
+
+.dialog-actions button.mat-button {
+  background-color: #1976d2; /* Material Design blue for primary actions */
+  color: white;
+}
+
+.dialog-actions button.mat-button:hover {
+  background-color: #1565c0; /* Darker blue on hover */
+}

@@ -1,38 +1,36 @@
-<div style="display: flex; flex-wrap: wrap">
-  <mat-card *ngFor="let movie of movies" style="flex: 1 1 auto; margin: 10px">
+<div class="movie-cards-container">
+  <mat-card
+    *ngFor="let movie of movies"
+    (click)="openMovieDetailsDialog(movie)"
+  >
     <mat-card-header>
       <mat-card-title>{{ movie.Title }}</mat-card-title>
-      <mat-card-subtitle
-        >Directed by: {{ movie.Director.Name }}</mat-card-subtitle
-      >
+      <mat-card-subtitle>{{ movie.Director.Name }}</mat-card-subtitle>
     </mat-card-header>
-    <img mat-card-image [src]="movie.ImagePath" alt="{{ movie.Title }}" />
+    <img mat-card-image [src]="movie.ImageURL" alt="{{ movie.Title }}" />
     <mat-card-content>
       <p>{{ movie.Description }}</p>
     </mat-card-content>
     <mat-card-actions>
-      <!-- Link to open Genre Dialog -->
-      <button mat-button color="primary" (click)="openGenreDialog(movie.Genre)">
-        Genre
-      </button>
-      <!-- Link to open Director Dialog -->
       <button
         mat-button
         color="primary"
-        (click)="openDirectorDialog(movie.Director)"
+        (click)="openGenreDialog(movie.Genre); $event.stopPropagation()"
+      >
+        Genre
+      </button>
+      <button
+        mat-button
+        color="primary"
+        (click)="openDirectorDialog(movie.Director); $event.stopPropagation()"
       >
         Director
       </button>
-      <!-- Link to open Movie Details Dialog -->
       <button
-        mat-button
-        color="primary"
-        (click)="openMovieDetailsDialog(movie)"
+        mat-icon-button
+        color="warn"
+        (click)="addToFavorites(movie._id); $event.stopPropagation()"
       >
-        Details
-      </button>
-      <!-- Button to add movie to favorites -->
-      <button mat-icon-button color="warn" (click)="addToFavorites(movie._id)">
         <mat-icon>favorite</mat-icon>
       </button>
     </mat-card-actions>

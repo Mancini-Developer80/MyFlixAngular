@@ -1,0 +1,121 @@
+/* Container for the movie cards */
+.movie-cards-container {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(280px, 1fr)
+  ); /* Responsive grid */
+  gap: 24px; /* Space between cards */
+  padding: 30px; /* Padding around the grid */
+  justify-content: center; /* Center the grid items */
+  background-color: #f9f9f9; /* Softer background color for better contrast */
+  border-radius: 8px; /* Optional: Rounded corners for the container */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Subtle shadow for the container */
+}
+
+/* Individual movie card styling */
+mat-card {
+  display: flex;
+  flex-direction: column; /* Stack content vertically */
+  justify-content: space-between; /* Ensure buttons are at the bottom */
+  height: 100%; /* Ensure all cards have the same height */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Slightly stronger shadow for better depth */
+  border-radius: 12px; /* More rounded corners for a modern look */
+  overflow: hidden; /* Ensure content stays within the card */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background-color: #ffffff; /* Ensure a clean white background */
+}
+
+mat-card:hover {
+  transform: scale(1.08); /* Slightly stronger zoom effect on hover */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+}
+
+/* Style for the card header */
+mat-card-header {
+  padding: 16px;
+  background-color: #1976d2; /* Material Design blue for the header */
+  color: white; /* White text for contrast */
+  font-weight: bold;
+  border-bottom: 2px solid #1565c0; /* Subtle border for separation */
+}
+
+/* Style for the card content */
+mat-card-content {
+  flex-grow: 1; /* Allow the content to take up available space */
+  padding: 16px;
+  font-size: 0.95rem;
+  color: #555555; /* Medium gray for text */
+  line-height: 1.6; /* Improve readability */
+}
+
+/* Style for the action buttons container */
+mat-card-actions {
+  display: flex;
+  justify-content: space-between; /* Space out the buttons */
+  align-items: center;
+  padding: 12px 16px;
+  border-top: 1px solid #eeeeee; /* Subtle border to separate actions */
+  margin-top: auto; /* Push the buttons to the bottom of the card */
+}
+
+/* Style for the primary buttons (Genre, Director) */
+mat-card-actions button[mat-button] {
+  background-color: #1976d2; /* Material Design blue */
+  color: white;
+  border: none;
+  font-weight: bold;
+  border-radius: 4px; /* Rounded corners */
+  padding: 8px 16px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+mat-card-actions button[mat-button]:hover {
+  background-color: #1565c0; /* Darker blue on hover */
+  transform: translateY(-2px); /* Slight lift effect on hover */
+}
+
+/* Style for the favorite icon button */
+mat-card-actions button[mat-icon-button] {
+  background-color: #d32f2f; /* Material Design red */
+  color: white;
+  border: none;
+  border-radius: 4px; /* Circular button */
+  padding: 5px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+mat-card-actions button[mat-icon-button]:hover {
+  background-color: #b71c1c; /* Darker red on hover */
+  transform: scale(1.1); /* Slight zoom effect on hover */
+}
+
+/* Style for the favorite icon */
+mat-card-actions mat-icon {
+  font-size: 20px;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+  .movie-cards-container {
+    grid-template-columns: repeat(
+      auto-fill,
+      minmax(200px, 1fr)
+    ); /* Adjust grid for smaller screens */
+    gap: 16px; /* Reduce spacing between cards */
+    padding: 20px; /* Reduce padding */
+  }
+
+  mat-card {
+    border-radius: 8px; /* Slightly less rounded corners for smaller cards */
+  }
+
+  mat-card-actions button[mat-button] {
+    padding: 6px 12px; /* Reduce button padding */
+    font-size: 0.9rem; /* Adjust font size for smaller screens */
+  }
+
+  mat-card-actions button[mat-icon-button] {
+    padding: 10px; /* Adjust padding for smaller screens */
+  }
+}
