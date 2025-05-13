@@ -6,8 +6,8 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test",
-    "typedoc": "typedoc --out docs --mode modules --exclude **/*.spec.ts src/app"
+    "test": "ng test"
+    
   },
   "private": true,
   "dependencies": {
