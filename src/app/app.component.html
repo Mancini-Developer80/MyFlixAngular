@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <mat-toolbar color="primary">
-  <span>myFlix</span>
-  <span class="spacer"></span>
-  <a mat-button routerlink="/welcome">Welcome</a>
-  <a mat-button routerlink="/movies">Movies</a>
-  <a mat-button routerlink="/profile">Profile</a>
+  <div class="container">
+    <span class="brand">myFlix</span>
+    <span class="spacer"></span>
+    <div class="menu-container">
+      <a mat-button href="/welcome">Welcome</a>
+      <a mat-button href="/movies" *ngIf="isLoggedIn">Movies</a>
+      <a mat-button href="/profile" *ngIf="isLoggedIn">Profile</a>
+    </div>
+  </div>
 </mat-toolbar>
 <router-outlet></router-outlet>

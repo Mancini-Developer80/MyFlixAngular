@@ -8,6 +8,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-login-form',
@@ -29,7 +30,8 @@ export class UserLoginFormComponent implements OnInit {
   constructor(
     public fetchApiData: FetchApiDataService,
     public dialogRef: MatDialogRef<UserLoginFormComponent>,
-    public snackBar: MatSnackBar
+    public snackBar: MatSnackBar,
+    private router: Router
   ) {}
 
   ngOnInit(): void {}
@@ -41,6 +43,9 @@ export class UserLoginFormComponent implements OnInit {
         this.snackBar.open('Login successful!', 'OK', {
           duration: 2000,
         });
+        localStorage.setItem('user', response.user);
+        localStorage.setItem('token', response.token);
+        this.router.navigate(['movies']);
       },
       (error) => {
         this.snackBar.open(
