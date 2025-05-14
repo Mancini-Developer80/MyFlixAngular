@@ -63,10 +63,11 @@ export class UserLoginFormComponent implements OnInit {
     this.fetchApiData.loginUser(this.loginData).subscribe(
       (response) => {
         this.dialogRef.close();
-        this.snackBar.open('Login successful!', 'OK', {
-          duration: 2000,
-        });
-        localStorage.setItem('user', response.user);
+        this.snackBar.open('Login successful!', 'OK', { duration: 2000 });
+        // Store the whole user object (optional)
+        localStorage.setItem('user', JSON.stringify(response.user));
+        // Store the user ID for API calls
+        localStorage.setItem('userId', response.user._id);
         localStorage.setItem('token', response.token);
         this.router.navigate(['movies']);
       },
@@ -74,9 +75,7 @@ export class UserLoginFormComponent implements OnInit {
         this.snackBar.open(
           'Login failed. Please check your credentials.',
           'OK',
-          {
-            duration: 2000,
-          }
+          { duration: 2000 }
         );
       }
     );

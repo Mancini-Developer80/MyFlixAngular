@@ -61,8 +61,8 @@ export class UserProfileComponent implements OnInit {
    * Retrieves user information and triggers fetching favorite movies.
    */
   getUserProfile(): void {
-    const username = localStorage.getItem('username') || '';
-    this.fetchApiData.getUser(username).subscribe(
+    const userId = localStorage.getItem('userId') || '';
+    this.fetchApiData.getUser(userId).subscribe(
       (response) => {
         this.userData = response;
         this.getFavoriteMovies();
@@ -77,8 +77,8 @@ export class UserProfileComponent implements OnInit {
    * Fetches the user's favorite movies from the API.
    */
   getFavoriteMovies(): void {
-    const username = localStorage.getItem('username') || '';
-    this.fetchApiData.getFavoriteMovies(username).subscribe(
+    const userId = localStorage.getItem('userId') || '';
+    this.fetchApiData.getFavoriteMovies(userId).subscribe(
       (response) => {
         this.favoriteMovies = response;
       },
@@ -93,8 +93,8 @@ export class UserProfileComponent implements OnInit {
    * Sends updated data to the API and displays a success or error message.
    */
   updateUserProfile(): void {
-    const username = localStorage.getItem('username') || '';
-    this.fetchApiData.editUser(username, this.userData).subscribe(
+    const userId = localStorage.getItem('userId') || '';
+    this.fetchApiData.editUser(userId, this.userData).subscribe(
       () => {
         this.snackBar.open('Profile updated successfully!', 'OK', {
           duration: 2000,

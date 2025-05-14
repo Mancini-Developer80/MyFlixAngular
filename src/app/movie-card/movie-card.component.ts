@@ -98,16 +98,24 @@ export class MovieCardComponent implements OnInit {
    *
    * @param movieId - The ID of the movie to be added to favorites.
    */
-  addToFavorites(movieId: string): void {
-    const username = localStorage.getItem('username') || '';
-    this.fetchApiData.addFavoriteMovie(username, movieId).subscribe(
+  // In your movie-card.component.ts (or similar)
+  addToFavorites(movie: any): void {
+    const userId = localStorage.getItem('userId');
+    if (!userId) {
+      this.snackBar.open('User not logged in.', 'OK', { duration: 2000 });
+      return;
+    }
+    if (!movie || !movie.Title) {
+      this.snackBar.open('Movie data is missing.', 'OK', { duration: 2000 });
+      return;
+    }
+    this.fetchApiData.addFavoriteMovie(userId, movie.Title).subscribe(
       () => {
         this.snackBar.open('Movie added to favorites!', 'OK', {
           duration: 2000,
         });
       },
       (error) => {
-        console.error('Error adding movie to favorites:', error);
         this.snackBar.open('Failed to add movie to favorites.', 'OK', {
           duration: 2000,
         });
