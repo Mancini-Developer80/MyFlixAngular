@@ -109,16 +109,30 @@ export class MovieCardComponent implements OnInit {
       this.snackBar.open('Movie data is missing.', 'OK', { duration: 2000 });
       return;
     }
+    // Prevent duplicate favorites: check if already in favorites
+    if (movie.isFavorite) {
+      this.snackBar.open('Movie already in favorites!', 'OK', {
+        duration: 2000,
+      });
+      return;
+    }
     this.fetchApiData.addFavoriteMovie(userId, movie.Title).subscribe(
       () => {
         this.snackBar.open('Movie added to favorites!', 'OK', {
           duration: 2000,
         });
+        movie.isFavorite = true; // Optionally update UI state
       },
       (error) => {
-        this.snackBar.open('Failed to add movie to favorites.', 'OK', {
-          duration: 2000,
-        });
+        if (error.status === 400) {
+          this.snackBar.open('Movie already in favorites!', 'OK', {
+            duration: 2000,
+          });
+        } else {
+          this.snackBar.open('Failed to add movie to favorites.', 'OK', {
+            duration: 2000,
+          });
+        }
       }
     );
   }
